@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
@@ -52,7 +53,6 @@ public class MainActivity extends Activity  {
 
         webView = (BridgeWebView) findViewById(R.id.webView);
 
-		button = (Button) findViewById(R.id.button);
 
 
 
@@ -93,13 +93,28 @@ public class MainActivity extends Activity  {
 		{
 			@Override
 			public void onPageFinished(WebView view, String url) {
-				super.onPageFinished(view, url);
+				//注入相关的业务js
 				BridgeUtil.webViewLoadLocalJs(view,"My.js" );
-
+				super.onPageFinished(view, url);
 			}
 		});
 
 		webView.loadUrl("file:///android_asset/demo.html");
+
+		WebSettings settings = webView.getSettings();
+
+		// Enable Javascript
+		settings.setJavaScriptEnabled(true);
+
+		// Use WideViewport and Zoom out if there is no viewport defined
+		settings.setUseWideViewPort(true);
+		settings.setLoadWithOverviewMode(true);
+
+		// Enable pinch to zoom without the zoom buttons
+		settings.setBuiltInZoomControls(true);
+		settings.setJavaScriptCanOpenWindowsAutomatically(true);
+		settings.setSupportMultipleWindows(true);
+		settings.setUseWideViewPort(true);// 让页面自适应屏幕宽度，适配活动中心广西营销活动页面
 
 		webView.registerHandler("Toast", new BridgeHandler() {
 

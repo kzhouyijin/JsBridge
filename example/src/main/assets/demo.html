@@ -3,6 +3,7 @@
 
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
     <title>
         js调用java
     </title>
@@ -11,34 +12,28 @@
 <body>
 
     <p>
-        <input type="button" id="enter" value="发消息给Native" onclick="testClick();" />
+        <input type="button" id="enter" value="发消息给Native" onclick="testClick()" />
     </p>
 
 </body>
 <script>
+   function testClick() {
 
 
+    console.log("1");
 
-
-
-
-
-    function testClick() {
-
-        my.Toast("你好", {
-            success: (res) => {
-                alert("success:"+res);
-            },
-            fail: (res) => {
-            alert("fail:"+res);
-            },
-            complete: (res) => {
-             alert("complete:"+res);
-            }
-        });
+    my.Toast("你好", {
+        success: function(res) {
+            alert("success:" + res);
+        },
+        fail: function(res) {
+            alert("fail:" + res);
+        },
+        complete: function(res) {
+            alert("complete:" + res);
+        }
+    });
     }
-
-
 
 </script>
 

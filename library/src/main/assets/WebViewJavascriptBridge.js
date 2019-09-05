@@ -41,6 +41,7 @@
 
     // 调用线程
     function callHandler(handlerName, data, responseCallback) {
+       console.log("3");
         _doSend({
             handlerName: handlerName,
             data: data
@@ -107,7 +108,6 @@
     }
 
     var WebViewJavascriptBridge = window.WebViewJavascriptBridge = {
-        init: init,
         send: send,
         callHandler: callHandler,
         _fetchQueue: _fetchQueue,

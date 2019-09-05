@@ -4,20 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <!-- button 演示Java调用web -->
-    <Button 
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:text="@string/button_name"
-        android:layout_height="48dp"
-        />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:text="刷新页面"
-        android:layout_height="48dp"
-        />
     
     <!-- webview 演示web调用Java -->
     <com.github.lzyzsd.jsbridge.BridgeWebView

@@ -73,15 +73,12 @@ public class BridgeWebViewClient extends WebViewClient {
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
         super.onPageStarted(view, url, favicon);
-    }
 
+    }
     @Override
     public void onPageFinished(WebView view, String url) {
-        super.onPageFinished(view, url);
         BridgeUtil.webViewLoadLocalJs(view, BridgeWebView.toLoadJs);
-
-
-        //
+        super.onPageFinished(view, url);
         if (webView.getStartupMessage() != null) {
             for (Message m : webView.getStartupMessage()) {
                 webView.dispatchMessage(m);
